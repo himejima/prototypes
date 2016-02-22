@@ -1,0 +1,81 @@
+<!DOCTYPE>
+<html manifest="drawing.manifest">
+<head>
+    <meta charset="utf-8">
+    <title>dddd</title>
+    <meta name="viewport" content="width=320, user-scalable=no" />
+    <script type="text/javascript">
+        var oldx, oldy;
+        var canvas, con, canvas_top = 20;
+        var color_index = 0;
+
+        window.onload = function() {
+            canvas = document.getElementById('a_canvas');
+            con = canvas.getContext("2d");
+            con.strokeWidth = 2;
+            con.strokeStyle = 'black';
+
+            console.log(canvas);
+            console.log(con);
+
+            // canvas.ontouchstart = function(e) { drawLine(e, true); };
+            // canvas.ontouchmove = function(e) { drawLine(e, false); };
+            // canvas.ontouchend = function(e) { drawLine(e, false); };
+
+            // var title = document.getElementById('a_canvas');
+            // title.onclick = function() {
+            //     title.style.backgroundColor = 'black';
+            //     con.strokeStyle = 'black';
+            // };
+
+            document.addEventListener("touchstart", function(event){
+                // console.log(123);
+                drawLine(event, true);
+            });
+            document.addEventListener("touchmove", function(event){
+                // console.log(222);
+                drawLine(event, false);
+            });
+            // document.addEventListener("ontouched", function(event){
+            //     // console.log(333);
+            //     drawLine(e, true);
+            // });
+        };
+
+        function drawLine(event, isStart) {
+            event.preventDefault();
+            if (event.touches.length == 0) return;
+            var t = event.touches[0];
+            var mx = t.pageX;
+            var my = t.pageY - canvas_top;
+            if (isStart) {
+                oldx = mx - 1;
+                oldy = my - 1;
+            }
+            con.beginPath();
+            con.moveTo(oldx, oldy);
+            con.lineTo(mx, my);
+            con.stroke();
+            oldx = mx;
+            oldy = my;
+        };
+        function draw() {
+          var canvas = document.getElementById('a_canvas');
+
+          if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+
+            ctx.beginPath();
+            ctx.moveTo(75,50);
+            ctx.lineTo(100,75);
+            ctx.lineTo(100,25);
+            ctx.fill();
+          }
+        }
+    </script>
+</head>
+<body>
+    <div id="title">お絵かき</div>
+    <canvas id="a_canvas" width="320" height="460"></canvas>
+</body>
+</html>

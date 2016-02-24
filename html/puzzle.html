@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>dddd</title>
+    <meta name="viewport" content="width=320, user-scalable=no" />
+    <script type="text/javascript">
+        var main_image = "gaga.jpg";
+        var panels = [];
+        var cell_w = 320 / 4;
+        var cell_h = 320 / 4;
+        var pos_array = [];
+        var canvas = document.getElementById('puzzle_canvas');
+        var con = canvas.getContext('2d');
+
+        var image = new Image();
+        image.src = main_image;
+        image.onload = function() {
+            con.drawImage(image, 0, 0);
+            setTimeout(shufflePanel, 3000);
+        }
+
+        function shufflePanel() {
+            for (var i = 0; i < 16; i++) {
+                panels[i] = i;
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="title">パズル</div>
+    <canvas id="puzzle_canvas" width="320" height="320"></canvas>
+</body>
+</html>

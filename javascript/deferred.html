@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-1.12.1.js"></script>
+        <script>
+            $(function() {
+
+                var promise = delayHello();
+                promise.done(function() {
+                    console.log('done done');
+                });
+
+                promise.fail(function(e) {
+                    console.log('rejected');
+                });
+
+                delayHello()
+                .then(hello1, hello2);
+
+                delayError()
+                .then(hello1, hello2);
+                // 1. deferredオブジェクト作る
+                // 2. 非同期処理を関連づける
+                // 3. Promiseだけ return;
+
+                function delayHello() {
+                    var d = new $.Deferred;
+                    window.setTimeout(function() {
+                        console.log('resolve');
+                        d.resolve();
+                    }, 1000);
+
+                    return d.promise();
+                };
+
+                function delayError() {
+                    var d = new $.Deferred;
+                    window.setTimeout(function() {
+                        d.reject('Error');
+                    }, 1000);
+
+                    return d.promise();
+                };
+
+                function hello1() {
+                    console.log('hello sync1');
+                };
+
+                function hello2(e) {
+                    console.log(e);
+                    console.log('hello sync2');
+                };
+            });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

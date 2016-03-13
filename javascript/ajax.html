@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-1.12.1.js"></script>
+        <script>
+            $(function() {
+                // $.ajax({
+                //     url: '/bbbbb',
+                //     type: 'get',
+                //     success: function(data) {
+                //         console.log(data);
+                //     },
+                //     error: function(e) {
+                //         console.log(e);
+                //         console.log('error');
+                //     }
+                // });
+                $.ajax({
+                    url: '/bbbbb',
+                    type: 'get',
+                })
+                .done(function() {
+                    console.log('success');
+                })
+                .fail(function() {
+                    console.log('error');
+                })
+                .always(function() {
+                    console.log('always');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        えーじゃっくすのてすと
+    </body>
+</html>

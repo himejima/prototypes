@@ -1,3 +1,5 @@
+package chap1;
+
 class Ex5
 {
     private static final String STR_SPACE = " ";

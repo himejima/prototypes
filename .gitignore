@@ -2,3 +2,8 @@
 *.out
 
 learning/chap1/Ex*.class
+learning/chap2/Ex*.class
+
+learning/.idea
+learning/out
+learning/learning.iml

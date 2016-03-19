@@ -14,10 +14,11 @@ public class Ex3 {
         n.appendToTail(20);
         n.appendToTail(150);
 
-        Node d = deleteMiddle(n);
+        deleteMiddle(n);
+        Node t = n;
     }
 
-    public static Node deleteMiddle(Node head) {
+    public static void deleteMiddle(Node head) {
         Node p1 = head;
         Node p2 = head;
 
@@ -29,6 +30,5 @@ public class Ex3 {
             }
             p2 = p2.next;
         }
-        return head;
     }
 }

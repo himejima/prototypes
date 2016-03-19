@@ -6,6 +6,10 @@ import chap2.Node;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println(999);
+        Node n = new Node(10);
+        n.appendToTail(20);
+        n.appendToTail(30);
+
+        n.deleteNode(n, 20);
     }
 }

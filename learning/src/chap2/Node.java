@@ -1,5 +1,8 @@
 package chap2;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Node {
     Node next = null;
     int data;
@@ -31,6 +34,42 @@ class Node {
             n = n.next;
         }
         return head;
+    }
+
+    // Ex1
+    Node deleteDuplicate(Node head) {
+        Node n = head;
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        Integer tmp;
+        while (n.next != null) {
+            tmp = map.get(n.data);
+            if (tmp == null) {
+                tmp = 0;
+            }
+            map.put(n.data, tmp + 1);
+
+            n = n.next;
+        }
+        // 末尾の処理
+        tmp = map.get(n.data);
+        if (tmp == null) {
+            tmp = 0;
+        }
+        map.put(n.data, tmp + 1);
+
+        n = head;
+        for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+            // System.out.println(e.getKey());
+            // System.out.println(e.getValue());
+            if (e.getValue() > 1) {
+                for (int i = 0; i < e.getValue(); i++) {
+                    // System.out.println(i);
+                    n = deleteNode(n, e.getKey());
+                }
+            }
+        }
+
+        return n;
     }
 }
 

@@ -3,9 +3,9 @@ package chap2;
 import java.util.HashMap;
 import java.util.Map;
 
-class Node {
-    Node next = null;
-    int data;
+public class Node {
+    public Node next = null;
+    public int data;
 
     public Node(int d) {
         data = d;

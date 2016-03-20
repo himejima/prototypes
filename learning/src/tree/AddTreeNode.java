@@ -5,6 +5,7 @@ import tree.TreeNode;
 /**
  * Created by himejima on 2016/03/20.
  */
+// TODO: 名前変更する
 public class AddTreeNode {
     public static void main(String[] args) {
         TreeNode node = new TreeNode();
@@ -12,6 +13,8 @@ public class AddTreeNode {
         insertNode(10, node);
         insertNode(30, node);
         insertNode(50, node);
+
+        System.out.println(findValue(node, 50));
     }
 
     public static TreeNode createNewNode(int num)
@@ -23,7 +26,7 @@ public class AddTreeNode {
 
         return newNode;
     }
-    
+
     public static void insertNode(int num, TreeNode node) {
         if (node.value == num) {
             return;
@@ -46,5 +49,23 @@ public class AddTreeNode {
             }
         }
         return;
+    }
+
+    public static TreeNode findValue(TreeNode node, int val) {
+        if (node.value > val) {
+            if (node.left == null) {
+                return null;
+            }
+            return findValue(node.left, val);
+        }
+
+        if (node.value < val) {
+            if (node.right == null) {
+                return null;
+            }
+            return findValue(node.right, val);
+        }
+        System.out.println(node.value);
+        return node;
     }
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-1.12.1.js"></script>
+        <script>
+            // jsonをparseしてjsのobjectにすると順番が変わる
+            // TODO: 順番をkeepするには、
+            // 1. 文字列で扱いparseする
+            // 2. あきらめて、登録の段階で添え字振る
+            // 3. 辞書型のリストにすれば順番keepできる
+            $(function() {
+                var t = '{"1": "都道府県", "4": "神奈川", "2": "東京", "3": "大阪"}';
+                console.log(JSON.parse(t));
+
+                var t2 = '{"b": "都道府県", "あ": "神奈川", "2": "東京", "3": "大阪"}';
+                console.log(JSON.parse(t2));
+
+                var t3 = '{"result": [{"1": "都道府県"}, {"4": "神奈川"}, {"2": "東京"}, {"3": "大阪"}]}';
+                console.log(JSON.parse(t3));
+            });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

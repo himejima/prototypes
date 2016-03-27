@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-1.12.1.js"></script>
+        <script>
+            window.onload = function() {
+                $('.upload').on('change', function(e) {
+                    console.log(e.target.files);
+                    var files = e.target.files;
+                    $.each(files, function(i) {
+                        console.log($(this)[0].name);
+                        var picture = new Image();
+                        var reader = new FileReader();
+                        var canvas = document.createElement('canvas');
+                        canvas.width = canvas.height = 0;
+                        reader.onloadend = function() {
+                            picture.onerror = function(e) {
+                                console.log('errror');
+                            };
+                            picture.onload = function() {
+                                console.log(888);
+                            };
+                            console.log(reader.result);
+                            picture.src = reader.result;
+                        };
+                        reader.readAsDataURL($(this)[0]);
+                    });
+                });
+            };
+        </script>
+    </head>
+    <body>
+        <form>
+            <img src="hogehoge.png" width="100" height="100">
+            <input type="file" class="upload"/>
+        </form>
+    </body>
+</html>

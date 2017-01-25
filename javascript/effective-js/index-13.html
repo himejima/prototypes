@@ -1,0 +1,36 @@
+<html>
+    <script>
+        function wrapElements(a) {
+            var result = [], i, n;
+            for (i = 0, n = a.length; i < n; i++) {
+                result[i] = function() { return a[i]; };
+            }
+
+            return result;
+        }
+
+        var wrapped = wrapElements([10, 20, 30, 40, 50]);
+        var f = wrapped[0];
+        // undefined
+        console.log('version1');
+        console.log(f());
+
+
+        function wrapElements2(a) {
+            var result = [];
+            for (var i = 0, n = a.length; i < n; i++) {
+                (function() {
+                    var j = i;
+                    result[i] = function() { return a[j]; };
+                })();
+            }
+            return result;
+        }
+        var wrapped2 = wrapElements2([10, 20, 30, 40, 50]);
+        var f2 = wrapped2[0];
+        console.log('version2');
+        console.log(f2());
+    </script>
+    <body>
+    </body>
+</html>

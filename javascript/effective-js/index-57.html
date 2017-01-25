@@ -1,0 +1,69 @@
+<html>
+    <script>
+        // 継承
+        function Page() {
+        }
+
+        function Wiki(format) {
+            this.format = format;
+        }
+
+        Wiki.prototype.displayPage = function(src) {
+            var page = this.format(src);
+            var title = page.getTitle();
+            var author = page.getAuthor();
+            var output = page.toHTML();
+            // ...
+
+            return title + ' ' + author + '' + output;
+        }
+
+        // function MWPage(src) {
+        //     Page.call(this. src);
+        // }
+
+        // MWPage.prototype = Object.create(Page.prototype);
+        // MWPage.prototype.getTitle = function() {
+        //     return 'getTitle1';
+        // };
+        // MWPage.prototype.getAuthor = function() {
+        //     return 'getAuthor1';
+        // };
+        // MWPage.prototype.toHTML = function() {
+        //     return 'toHTML1';
+        // };
+
+        // Wiki.format.MEDIAWIKI = function(src) {
+        //     console.log('src');
+        //     return new MWPage(src);
+        // };
+
+        // 継承
+        // var app = new Wiki(Wiki.format.MEDIAWIKI);
+        // var page = app.displayPage('dummy src1');
+        // console.log(page);
+
+        // 構造的な型付け
+
+        var app2 = new Wiki(Wiki.format.MEDIAWIKI2);
+        var page2 = app2.displayPage('dummy src2');
+
+        Wiki.format.MEDIAWIKI2 = function(src) {
+            return {
+                getTitle: function() {
+                    return 'getTitle2';
+                },
+                getAuthor: function() {
+                    return 'getAuthor2';
+                },
+                toHTML: function() {
+                    return 'toHTML2';
+                }
+            };
+        }
+
+
+    </script>
+    <body>
+    </body>
+</html>

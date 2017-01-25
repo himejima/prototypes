@@ -1,0 +1,29 @@
+<html>
+    <script>
+        // new に依存しないコンストラクタ
+        // function User(name, passwordHash) {
+        //     if (!(this instanceof User)) {
+        //         return new User(name, passwordHash);
+        //     }
+        //     this.name = name;
+        //     this.passwordHash = passwordHash;
+        // }
+
+        function User(name, passwordHash) {
+            var self = this instanceof User
+                ? this
+                : Object.create(User.prototype);
+
+            self.name = name;
+            self.passwordHash = passwordHash;
+
+            return self;
+        }
+
+        var u = new User("hachi", "pw");
+        var u2 = new User("hachi", "pw");
+
+    </script>
+    <body>
+    </body>
+</html>

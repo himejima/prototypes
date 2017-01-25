@@ -1,0 +1,57 @@
+<html>
+    <meta charset="utf-8"/>
+    <script>
+        function CSVReader(separators) {
+            this.separators = separators || [","];
+            this.regexp =
+                new RegExp(this.separators.map(function(sep) {
+                    // console.log('sep', sep);
+                    return "\\" + sep[0];
+                }).join("|"));
+        };
+
+        // pat1. コールバックにthisを送る
+        CSVReader.prototype.read = function(str) {
+            console.log('regexp', this.regexp);
+            var lines = str.trim().split(/\n/);
+            console.log('lines', lines);
+            return lines.map(function(line) {
+                // console.log('line', line);
+                return line.split(this.regexp);
+            }, this);
+
+        };
+
+        // pat2. 外側のthisを保存する
+        CSVReader.prototype.read2 = function(str) {
+            var that = this;
+            var lines = str.trim().split(/\n/);
+            return lines.map(function(line) {
+                return line.split(that.regexp);
+            });
+        };
+
+        // pat3. bind
+        CSVReader.prototype.read3 = function(str) {
+            var lines = str.trim().split(/\n/);
+            return lines.map(function(line) {
+                return line.split(this.regexp);
+            }.bind(this));
+        };
+
+        var target = "a,b,c\nd,e,f\n";
+        console.log(target);
+        // var reader = new CSVReader([",", "|"]);
+        var reader = new CSVReader();
+        var res = reader.read(target);
+        console.log(res);
+
+        // var res2 = reader.read2(target);
+        // console.log(res2);
+
+        // var res3 = reader.read3(target);
+        // console.log(res3);
+    </script>
+    <body>
+    </body>
+</html>

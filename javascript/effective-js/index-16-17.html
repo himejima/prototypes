@@ -1,0 +1,21 @@
+<html>
+    <script>
+        var y = "global";
+        function test(src) {
+            (function() { eval(src); })();
+            return y;
+        }
+        console.log(test("var y = 'local';"));
+        console.log(test("var z = 'local';"));
+
+        var a = "global";
+        function test() {
+            var a = "local";
+            var f = eval;
+            return f("a");
+        }
+        console.log(test());
+    </script>
+    <body>
+    </body>
+</html>

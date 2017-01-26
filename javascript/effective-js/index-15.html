@@ -1,0 +1,36 @@
+<html>
+    <script>
+        window.onload = function() {
+            function f() { return "global"; }
+            function test(x) {
+                var result = [];
+                if (x) {
+                    function f() { return "local"; }
+                    result.push(f());
+                }
+                result.push(f());
+                return result;
+            }
+
+            console.log('part1');
+            console.log(test(true));
+            // console.log(test(false));
+
+            function f2() { return "global"; }
+            function test2(x) {
+                var g2 = f2, result = [];
+                if (x) {
+                    g2 = function() { return "local"; }
+                    result.push(g2());
+                }
+                result.push(g2());
+                return result;
+            }
+            console.log('part2');
+            console.log(test2(true));
+            console.log(test2(false));
+        };
+    </script>
+    <body>
+    </body>
+</html>

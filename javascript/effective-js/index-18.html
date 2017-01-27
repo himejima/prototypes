@@ -1,0 +1,17 @@
+<html>
+    <script>
+        function User(name, passwordHash) {
+            this.name = name;
+            this.passwordHash = passwordHash;
+        }
+        var u = new User("myname", "pass");
+
+        function hello() {
+            // "use strict";
+            return "hello, " + this.username;
+        }
+        console.log(hello());
+    </script>
+    <body>
+    </body>
+</html>

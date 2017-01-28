@@ -1,0 +1,34 @@
+<html>
+    <script>
+        var t = [3, 1, 4, 1, 5, 9].sort(function(x, y) {
+            console.log('x', x);
+            console.log('y', y);
+            if (x < y) {
+                return -1;
+            }
+
+            if (x > y) {
+                return 1;
+            }
+            return 0;
+        });
+        console.log(t);
+
+        function buildString(n, callback) {
+            var result = "";
+            for (var i = 0; i < n; i++) {
+                result += callback(i);
+            }
+            return result;
+        }
+        var al = buildString(26, function(i) {
+            var aIndex = "a".charCodeAt(0);
+            return String.fromCharCode(aIndex + i);
+        });
+        console.log('alphabet', al);
+        var digits = buildString(30, function(i) { return i; });
+        console.log('digits', digits);
+    </script>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<html>
+    <script>
+        (function f() {
+            console.log('arg callee', typeof arguments.callee);
+            console.log('arg caller', typeof arguments.caller);
+        })();
+
+        function f2() {
+            'use strict';
+            var t = f2.caller;
+            console.log('t= ', t);
+            return t;
+        };
+        f2();
+    </script>
+    <body>
+    </body>
+</html>

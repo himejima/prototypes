@@ -1,0 +1,15 @@
+<html>
+    <script>
+        var empty = {};
+        console.log(empty.hasOwnProperty("alice"));
+        console.log(empty.hasOwnProperty("toString"));
+
+        empty.hasOwnProperty = 10;
+        // console.log(empty.hasOwnProperty("alice"));
+
+        var hasOwn = {}.hasOwnProperty;
+        console.log(hasOwn.call(empty, "alice"));
+    </script>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+    <script>
+        var data = [
+            { name: "Hank", points: 1000 },
+            { name: "Steve", points: 900 },
+            { name: "Billy", points: 300 }
+        ];
+
+        var res = function (highScores) {
+            var result = "";
+            for (var i = 0, n = highScores.length; i < n; i++) {
+                var score = highScores[i];
+                result += (i + 1) + ". " + score.name + ": " + score.points + "\n";
+            }
+
+            return result;
+        }(data);
+        console.log(res);
+
+        var r = {
+            "G": 0.8,
+            "M": 0.7,
+            "2": 0.6,
+            "D": 0.9
+        };
+        var res2 = function(r) {
+            var total = 0, count = 0;
+            for (var k in r) {
+                console.log('key', k);
+                total += r[k];
+                count++;
+            }
+            total /= count;
+
+            return total;
+        }(r);
+        console.log('res2', res2);
+
+    </script>
+    <body>
+    </body>
+</html>

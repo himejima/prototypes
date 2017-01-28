@@ -1,0 +1,27 @@
+<html>
+    <script>
+        // function NaiveDict() {}
+
+        // NaiveDict.prototype.count = function() {
+        //     var i = 0;
+        //     for (var name in this) {
+        //         i++;
+        //     }
+        //     return i;
+        // };
+
+        // var dict = new NaiveDict();
+
+        var dict = {};
+        dict.alice = 34;
+        dict.bob = 24;
+        dict.chris = 62;
+        var names = [];
+        for (var name in dict) {
+            names.push(name);
+        }
+        console.log('names: ', names);
+    </script>
+    <body>
+    </body>
+</html>

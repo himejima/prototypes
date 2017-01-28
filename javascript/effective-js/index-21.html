@@ -1,0 +1,24 @@
+<html>
+    <script>
+        var buffer = {
+            state: [],
+            append: function() {
+                console.log('arguments');
+                console.log(arguments);
+                console.log(typeof arguments);
+                for (var i = 0, n = arguments.length; i < n; i++) {
+                    this.state.push(arguments[i]);
+                }
+            }
+        };
+
+        buffer.append("Hello, ");
+        buffer.append("firstName", " ", "lastName", "!");
+
+        var arg = [1,2,3,4,5];
+
+        buffer.append.apply(buffer, arg);
+    </script>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+    <script>
+        function average() {
+            console.log('arguments');
+            console.log(arguments);
+
+            return function (a) {
+                var args = a.length === 1 ? a[0] : Array.apply(null, a);
+
+                for (var i = 0, sum = 0, n = args.length; i < n; i++) {
+                    // console.log(args[i]);
+                    sum += args[i];
+                }
+                return sum / n;
+            }(arguments);
+        }
+    </script>
+    <body>
+    </body>
+</html>

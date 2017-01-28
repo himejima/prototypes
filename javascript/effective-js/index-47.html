@@ -1,0 +1,16 @@
+<html>
+    <script>
+        var d = { a: 1, b: 2, c: 3 };
+
+        var r = function allKeys(obj) {
+            var result = [];
+            for (var k in obj) {
+                result.push(k);
+            }
+            return result;
+        }(d);
+        console.log("result", r);
+    </script>
+    <body>
+    </body>
+</html>

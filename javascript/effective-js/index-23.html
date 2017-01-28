@@ -1,0 +1,22 @@
+<html>
+    <script>
+        // function callMethod(obj, method) {
+        //     var shift = [].shift;
+        //     shift.call(arguments);
+        //     shift.call(arguments);
+        //     console.log(arguments);
+        //     return obj[method].apply(obj, arguments);
+        // }
+        function callMethod(obj, method) {
+            var args = [].slice.call(arguments, 2);
+            return obj[method].apply(obj, args);
+        }
+        var obj = {
+            add: function(x, y) { return x + y; }
+        };
+        var t = callMethod(obj, "add", 17, 25);
+        console.log('result', t);
+    </script>
+    <body>
+    </body>
+</html>

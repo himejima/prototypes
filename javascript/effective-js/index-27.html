@@ -1,0 +1,33 @@
+<html>
+    <script>
+        function repeat(n, callback) {
+            for (var i = 0; i < n; i++) {
+                callback();
+            }
+        }
+
+        var t = (function benchmark() {
+            var start = [],
+                end = [],
+                timings = [];
+            repeat(3, function() {
+                start.push(Date.now());
+                for (var n = 0; n < 1000; n++) {
+                    console.log(99999);
+                }
+                end.push(Date.now());
+            });
+            for (var i = 0, n = start.length; i < n; i++) {
+                console.log('i=', i);
+                console.log('start', start[i]);
+                console.log('end', end[i]);
+                timings[i] = end[i] - start[i];
+            }
+
+            return timings;
+        })();
+        console.log(t);
+    </script>
+    <body>
+    </body>
+</html>

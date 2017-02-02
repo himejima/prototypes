@@ -1,4 +1,6 @@
 <html>
+    <head>
+    </head>
     <body>
         <form>
             <div>
@@ -12,7 +14,7 @@
             </div>
             <div>
                 <label>email</label>
-                <input type="email" autofocus required>
+                <input id="email" type="email" autofocus required>
             </div>
             <div>
                 <label>url</label>
@@ -46,5 +48,16 @@
                 <meter low="0.2" high="0.8" value="1">1</meter>
             </div>
         </form>
+        <script>
+            (function() {
+                var email = document.getElementById('email');
+                email.addEventListener('input', function(e) {
+                    var valid = e.currentTarget.checkValidity(),
+                        validMsg = e.currentTarget.nextSibling,
+                        status = (valid) ? 'o' : 'x';
+                    validMsg.textContent = status;
+                }, false);
+            })();
+        </script>
     </body>
 </html>

@@ -8,6 +8,9 @@ body {
     font-size: 1.2rem;
     font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }
+ol, ul {
+    -webkit-padding-start: 0;
+}
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -93,6 +96,25 @@ a:link, a:visited, a:hover, a:active {
 .ranking {
     margin-bottom: 30px;
     list-style-type: none;
+    counter-reset: ranking;
+}
+.ranking .order {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    color: #aaa;
+    text-align: center;
+    font-weight: bold;
+    line-height: 16px;
+    vertical-align: 20px;
+}
+.ranking .order:before {
+    content: counter(ranking);
+    counter-increment: ranking;
+    display: inline-block;
+    font-size: 1.0rem;
 }
 .ranking .ranking-item {
     margin-top: 15px;
@@ -128,6 +150,59 @@ a:link, a:visited, a:hover, a:active {
     text-align: center;
     font-weight: bold;
     line-height: 16px;
+}
+.documents {
+    margin: 10px 30px 10px;
+}
+.documents,
+.documents ul {
+    list-style-type: none;
+}
+.documents > li .title {
+    margin: 15px 0;
+    padding-left: 8px;
+    font-size: 1.4rem;
+    border-left: 5px solid #d03c56;
+    line-height: 1.2;
+}
+.documents > li + li {
+    margin-top: 25px;
+}
+.documents > li ul {
+    margin: 15px;
+}
+.documents > li ul > li {
+    margin-bottom: 15px;
+    padding-left: 10px;
+
+}
+.documents a:hover {
+    text-decoration: underline;
+}
+.search-box {
+    padding: 15px;
+    background-color: #ccc;
+    font-size: 0;
+}
+.search-box > * {
+    font-size: 1.2rem;
+}
+.search-box .search-input {
+    width: 205px;
+    height: 26px;
+    padding: 0 10px;
+    border: none;
+}
+.search-box .search-button {
+    width: 40px;
+    height: 26px;
+    border: none;
+    background-color: #d03c56;
+    color: #fff;
+    cursor: pointer;
+}
+.search-box .text {
+    margin-top: 12px;
 }
 .footer {
     width: 100%;

@@ -1,33 +1,47 @@
 <html>
     <script>
         (function() {
-            var findNodes = function() {
+            var findNodes = function(callback) {
                 var i = 100,
                     nodes = [],
                     found;
+
+                if (typeof callback !== "function") {
+                    callback = false;
+                }
+
+                // console.log('callback', callback);
                 while (i) {
                     i--;
 
-                    found = i;
+                    if (callback) {
+                        found = i;
+                        found = callback(found);
+                        // console.log('found', found);
+                    }
                     nodes.push(found);
                 }
-                console.log('nodes', nodes);
                 return nodes;
             };
 
-            var hide = function(nodes) {
-                var i = 0, max = nodes.length;
-                var result = [];
-                for (; i < max; i += 1) {
-                    // nodes[i].style.display = "none";
-                    // nodes[i] = nodes[i] * 2;
-                    result[i] = nodes[i] * 2;
-                }
+            var hide = function(node) {
+                return node * 2;
+            };
 
-                return result;
-            }
+            // var hide = function(nodes) {
+            //     var i = 0, max = nodes.length;
+            //     var result = [];
+            //     for (; i < max; i += 1) {
+            //         // nodes[i].style.display = "none";
+            //         // nodes[i] = nodes[i] * 2;
+            //         result[i] = nodes[i] * 2;
+            //     }
 
-            var result = hide(findNodes());
+            //     return result;
+            // }
+
+            // var result = hide(findNodes());
+            var result = findNodes(hide);
             console.log('result', result);
         })();
     </script>

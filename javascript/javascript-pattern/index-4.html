@@ -1,0 +1,36 @@
+<html>
+    <script>
+        (function() {
+            var findNodes = function() {
+                var i = 100,
+                    nodes = [],
+                    found;
+                while (i) {
+                    i--;
+
+                    found = i;
+                    nodes.push(found);
+                }
+                console.log('nodes', nodes);
+                return nodes;
+            };
+
+            var hide = function(nodes) {
+                var i = 0, max = nodes.length;
+                var result = [];
+                for (; i < max; i += 1) {
+                    // nodes[i].style.display = "none";
+                    // nodes[i] = nodes[i] * 2;
+                    result[i] = nodes[i] * 2;
+                }
+
+                return result;
+            }
+
+            var result = hide(findNodes());
+            console.log('result', result);
+        })();
+    </script>
+    <body>
+    </body>
+</html>

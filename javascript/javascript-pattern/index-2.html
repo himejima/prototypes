@@ -1,0 +1,19 @@
+<html>
+    <script>
+        var global_var = 1;
+        global_novar = 2;
+        (function() {
+            global_fromfunc = 3;
+        })();
+
+        delete global_var;
+        delete global_novar;
+        delete global_fromfunc;
+
+        console.log(typeof global_var);
+        console.log(typeof global_novar);
+        console.log(typeof global_fromfunc);
+    </script>
+    <body>
+    </body>
+</html>

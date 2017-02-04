@@ -1,0 +1,41 @@
+<html>
+    <script>
+        // var MYAPP = MYAPP || {};
+        // MYAPP.Parent = function() {};
+        // MYAPP.Child = function() {};
+
+        // MYAPP.some_var = 1;
+        // MYAPP.modules = {};
+
+        // MYAPP.modules.module1 = {};
+        // MYAPP.modules.module1.data = {a: 1, b: 2};
+        // MYAPP.modules.module2 = {};
+
+        var MYAPP = MYAPP || {};
+        MYAPP.namespace = function(ns_string) {
+            var parts = ns_string.split('.'),
+                parent = MYAPP,
+                i;
+            if (parts[0] === "MYAPP") {
+                parts = parts.slice(1);
+            }
+            console.log('parts', parts);
+
+            for (i = 0; i < parts.length; i += 1) {
+                if (typeof parent[parts[i]] === "undefined") {
+                    parent[parts[i]] = {};
+                }
+                parent = parent[parts[i]];
+            }
+
+            return parent;
+        };
+
+        var module2 = MYAPP.namespace('MYAPP.modules.module2');
+        console.log(module2 === MYAPP.modules.module2);
+
+        MYAPP.namespace('modules.module51');
+    </script>
+    <body>
+    </body>
+</html>

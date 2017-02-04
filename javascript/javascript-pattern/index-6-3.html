@@ -1,0 +1,21 @@
+<html>
+    <script>
+        function Parent(name) {
+            this.name = name || 'Adam';
+        }
+
+        Parent.prototype.say = function() {
+            return this.name;
+        }
+
+        function Child(name) {}
+
+        function inherit(C, P) {
+            C.prototype = new P();
+        }
+
+        inherit(Child, Parent);
+    </script>
+    <body>
+    </body>
+</html>

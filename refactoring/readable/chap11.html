@@ -1,40 +1,93 @@
 <html>
     <script>
-        var location_infos = [
-            {
-                'LocalityName': "Santa Monica",
-                'SubAdministrativeAreaName': "Los Angeles",
-                'AdministrativeAreaName': "California",
-                'CountryName': "USA"
-            },
-            {
-                'CountryName': "Canada"
-            },
-            {
-                'SubAdministrativeAreaName': "Washington, DC",
-                'CountryName': "USA"
-            }
-        ];
+        (function() {
+            var location_infos = [
+                {
+                    'LocalityName': "Santa Monica",
+                    'SubAdministrativeAreaName': "Los Angeles",
+                    'AdministrativeAreaName': "California",
+                    'CountryName': "USA"
+                },
+                {
+                    'CountryName': "Canada"
+                },
+                {
+                    'SubAdministrativeAreaName': "Washington, DC",
+                    'CountryName': "USA"
+                }
+            ];
 
-        for (var i = 0, max = location_infos.length; i < max; i++) {
-            var location_info = location_infos[i];
-            var place = location_info['LocalityName'];
-            if (!place) {
-                place =  location_info["SubAdministrativeAreaName"];
+            function displayAddress2(location_info) {
+                var town = location_info['LocalityName'];
+                var city = location_info['SubAdministrativeAreaName'];
+                var state = location_info['AdministrativeAreaName'];
+                var country = location_info['CountryName'];
+
+                var second_half = "Planet Earth";
+                if (country) {
+                    second_half = country;
+                }
+                if (state && country === "USA") {
+                    second_half = state;
+                }
+
+                var first_half = "Middle-of-Nowhere";
+                if (state && country !== "USA") {
+                    first_half = state;
+                }
+                if (city) {
+                    first_half = city;
+                }
+                if (town) {
+                    first_half = town;
+                }
+
+                return first_half + ", " + second_half;
             }
-            if (!place) {
-                place =  location_info["AdministrativeAreaName"];
+
+            function displayAddress3(location_info) {
+                var town = location_info['LocalityName'];
+                var city = location_info['SubAdministrativeAreaName'];
+                var state = location_info['AdministrativeAreaName'];
+                var country = location_info['CountryName'];
+
+                var fist_half, second_half;
+                if (country === "USA") {
+                    first_half = town || city || "Middle-of-Nowhere";
+                    second_half = state || "USA";
+                } else {
+                    first_half = town || city || state || "Middle-of-Nowhere";
+                    second_half = country || "Planet Earth";
+                }
+
+                return first_half + ", " + second_half;
             }
-            if (!place) {
-                place = "Middle-of-Nowhere";;
+
+            for (var i = 0, max = location_infos.length; i < max; i++) {
+                var place2 = displayAddress2(location_infos[i]);
+                console.log('place2: ', place2);
+
+                var place3 = displayAddress3(location_infos[i]);
+                console.log('place3: ', place3);
+
+                // var place = location_info['LocalityName'];
+                // if (!place) {
+                //     place =  location_info["SubAdministrativeAreaName"];
+                // }
+                // if (!place) {
+                //     place =  location_info["AdministrativeAreaName"];
+                // }
+                // if (!place) {
+                //     place = "Middle-of-Nowhere";;
+                // }
+                // if (location_info["CountryName"]) {
+                //     place += ", " + location_info["CountryName"];
+                // } else {
+                //     place += ", Planet Earth";
+                // }
+                // console.log('place: ', place);
             }
-            if (location_info["CountryName"]) {
-                place += ", " + location_info["CountryName"];
-            } else {
-                place += ", Planet Earth";
-            }
-            console.log('place: ', place);
-        }
+        })();
     </script>
     <body>
     </body>

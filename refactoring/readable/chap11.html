@@ -1,0 +1,21 @@
+<html>
+    <script>
+        var location_infos = [
+            {
+                'CountryName': "Canada"
+            },
+            {
+                'SubAdministrativeAreaName': "Washington, DC",
+                'CountryName': "USA"
+            }
+        ];
+
+        var location_info = location_infos[0];
+        var place = location_info['LocalityName'];
+        if (!place) {
+            place =  location_info["SubAdministrativeAreaName"];
+        }
+    </script>
+    <body>
+    </body>
+</html>

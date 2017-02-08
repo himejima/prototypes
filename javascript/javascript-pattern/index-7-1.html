@@ -1,0 +1,20 @@
+<html>
+    <script>
+        (function() {
+            function Universe() {
+                if (typeof Universe.instance === "object") {
+                    return Universe.instance;
+                }
+
+                // キャッシュ
+                Universe.instance = this;
+            }
+
+            var uni = new Universe();
+            var uni2 = new Universe();
+            console.log('uni === uni2 : ', uni === uni2);
+        })();
+    </script>
+    <body>
+    </body>
+</html>

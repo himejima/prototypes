@@ -13,6 +13,19 @@
             var uni = new Universe();
             var uni2 = new Universe();
             console.log('uni === uni2 : ', uni === uni2);
+
+            function Universe2() {
+                // キャッシュ
+                var instance = this;
+
+                Universe2 = function() {
+                    return instance;
+                };
+            }
+
+            var uni3 = new Universe2();
+            var uni4 = new Universe2();
+            console.log('uni3 === uni4 : ', uni3 === uni4);
         })();
     </script>
     <body>

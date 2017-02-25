@@ -1,0 +1,41 @@
+<html>
+    <script>
+        function CarMaker() {}
+
+        // 親のメソッド
+        CarMaker.prototype.drive = function() {
+            return "Vloom, I have " + this.doors + " doors";
+        };
+
+        CarMaker.factory = function(type) {
+            var constr = type,
+                newcar;
+
+
+            // TODO: コンストラクタが存在しなかったらエラー
+
+            // 親から継承
+            if (typeof CarMaker[constr].prototype.drive !== "function") {
+                CarMaker[constr].prototype = new CarMaker();
+            }
+
+            newcar = new CarMaker[constr]();
+
+            return newcar;
+        };
+
+        CarMaker.Compact = function() {
+            this.doors = 4;
+        };
+
+        CarMaker.Convertible = function() {
+            this.doors = 2;
+        };
+
+        CarMaker.Convertible = function() {
+            this.doors = 17;
+        };
+    </script>
+    <body>
+    </body>
+</html>

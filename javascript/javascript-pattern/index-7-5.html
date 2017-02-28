@@ -8,6 +8,42 @@
                 username: "o_0"
             };
 
+            var validator = {
+                types: {},
+                messages: {},
+                config: {},
+                validate: function (data) {
+                    var i, type, checker, result_ok;
+                    this.messages = [];
+
+                    for (i in data) {
+                        if (data.hasOwnProperty(i)) {
+                            type = this.config[i];
+                            checker = this.types[type];
+
+                            if (!type) {
+                                continue;
+                            }
+
+                            if (!checker) {
+                                // 例外
+                            }
+
+                            result_ok = checker.validate(data[i]);
+                            if (!result_ok) {
+                                msg = "Value *" + i + "*, " + checker.messages;
+                                this.messages.push(msg);
+                            }
+                        }
+                    }
+
+                    return this.hasErrors();
+                },
+                hasErrors: function() {
+                    return this.messages.length != 0;
+                }
+            };
+
             validator.config = {
                 first_name: 'isNonEmpty',
                 age: 'isNumber',
@@ -18,26 +54,26 @@
                 validate: function (value) {
                     return value !== "";
                 },
-                message: "値を入力してください"
+                messages: "値を入力してください"
             };
 
             validator.types.isNumber = {
                 validate: function (value) {
                     return !isNaN(value);
                 },
-                message: "数字を入力してください"
+                messages: "数字を入力してください"
             };
 
             validator.types.isAlphaNum = {
                 validate: function (value) {
                     return !/[^a-z0-9]/i.test(value);
                 },
-                message: "アルファベット数字を入力してください"
+                messages: "アルファベット数字を入力してください"
             };
 
             validator.validate(data);
             if (validator.hasErrors()) {
-                console.log(validator.messages.join("\n");
+                console.log(validator.messages.join("\n"));
             }
         })();
     </script>

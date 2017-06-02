@@ -64,9 +64,8 @@ class BaseballCoach extends Human
 
 class Training
 {
-    private $before_coatch;
+    private $coach;
     private $before_player;
-    private $current_coach;
     private $current_player;
     private $type;
 
